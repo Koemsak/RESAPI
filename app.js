@@ -74,7 +74,9 @@ app.delete("/api/users/:id", (req, res) => {
 })
 
 app.post("/api/callback", (req, res) => {
-    const { contents } = req.body;
+    const inputField = JSON.parse(request.body);
+    console.log(`Request data from partner: ${request.body}`);
+    const contents = inputField.contents;
     const password = "277a44d5ca16cd81ae9538f1269182df";
     const iv = Buffer.from(password.substring(0, 16), 'utf-8');
     const decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(password, 'utf-8'), iv);
