@@ -85,7 +85,7 @@ app.post("/api/callback", (req, res) => {
     decrypted = Buffer.concat([decrypted, decipher.final()]);
 
     console.log(decrypted.toString('utf8'));
-    return res.status(200).json({ status: 200, message: "Successfully", data: req.body.contents });
+    return res.status(200).json({ status: 200, message: "Successfully", data: JSON.parse(decrypted.toString('utf8')) });
 })
 
 // get use to view
