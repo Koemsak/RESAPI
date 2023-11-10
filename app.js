@@ -75,17 +75,6 @@ app.delete("/api/users/:id", (req, res) => {
 
 app.post("/api/callback", (req, res) => {
     console.log(req.body);
-    // const inputField = JSON.parse(req.body);
-    // console.log(`Request data from partner: ${req.body}`);
-    // const contents = inputField.contents;
-    // const password = "277a44d5ca16cd81ae9538f1269182df";
-    // const iv = Buffer.from(password.substring(0, 16), 'utf-8');
-    // const decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(password, 'utf-8'), iv);
-
-    // let decrypted = decipher.update(Buffer.from(contents, 'base64'));
-    // decrypted = Buffer.concat([decrypted, decipher.final()]);
-
-    // console.log(decrypted.toString('utf8'));
     return res.status(200).json({ status: 200, message: "Successfully", data: req.body });
 })
 
