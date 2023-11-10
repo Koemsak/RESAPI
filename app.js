@@ -80,14 +80,13 @@ app.post("/api/callback", (req, res) => {
     const password = "277a44d5ca16cd81ae9538f1269182df";
     const iv = Buffer.from(password.substring(0, 16), 'utf-8');
     const decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(password, 'utf-8'), iv);
+    // Check if contents data is can't decrypt
+    if (!decipher) {
+        return res.status(200).json({ status: 200, message: `Contents data can't decrypt with key '${iv}' and iv '${iv}'`, data: null });
+    }
     let decrypted = decipher.update(Buffer.from(contents, 'base64'));
     decrypted = Buffer.concat([decrypted, decipher.final()]);
-    // Check if contents data is can't decrypt
-    if (!decrypted) {
-        return res.status(200).json({ status: 200, message: `Contents data can't decrypt with key '${iv}' and iv '${iv}'`, data: null });
-    } else {
-        return res.status(200).json({ status: 200, message: "Successfully", data: JSON.parse(decrypted.toString('utf8')) });
-    }
+    return res.status(200).json({ status: 200, message: "Successfully", data: JSON.parse(decrypted.toString('utf8')) });
 })
 
 // get use to view
