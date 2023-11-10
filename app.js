@@ -74,8 +74,8 @@ app.delete("/api/users/:id", (req, res) => {
 })
 
 app.post("/api/callback", (req, res) => {
-    const inputField = JSON.parse(req.body);
-    console.log(`Request data from partner: ${JSON.stringify(inputField)}`);
+    const inputField = req.body[0];
+    console.log(`Request data from partner: ${inputField[0]}`);
     try {
         const contents = inputField.contents;
         const password = "73785ff0d5cb651ca551a3d3820a2e9c";
