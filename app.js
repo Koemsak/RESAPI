@@ -75,10 +75,10 @@ app.delete("/api/users/:id", (req, res) => {
 
 app.post("/api/callback", (req, res) => {
     const inputField = req.body;
-    console.log(`Request data from partner: ${JSON.stringify(req.body)}`);
+    console.log(`Request data from partner: ${JSON.stringify(inputField)}`);
     try {
         const contents = inputField.contents;
-        const password = "277a44d5ca16cd81ae9538f1269182df";
+        const password = "73785ff0d5cb651ca551a3d3820a2e9c";
         const iv = Buffer.from(password.substring(0, 16), 'utf-8');
         const decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(password, 'utf-8'), iv);
         let decrypted = decipher.update(Buffer.from(contents, 'base64'));
