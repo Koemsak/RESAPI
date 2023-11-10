@@ -86,7 +86,7 @@ app.post("/api/callback", (req, res) => {
         console.log(`Decrypted data: ${decrypted.toString('utf8')}`);
         return res.status(200).json({ status: 200, message: "Successfully", data: JSON.parse(decrypted.toString('utf8')) });
     } catch (error) {
-        return res.status(400).json({ status: error.code, message: error.message, data: null });
+        return res.status(400).json({ status: 400, message: "Invalid contents data.", data: null });
     }
 
 })
