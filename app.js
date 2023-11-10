@@ -84,6 +84,7 @@ app.post("/api/callback", (req, res) => {
     if (!decipher) {
         return res.status(200).json({ status: 200, message: `Contents data can't decrypt with key '${iv}' and iv '${iv}'`, data: null });
     }
+    console.log(decipher);
     let decrypted = decipher.update(Buffer.from(contents, 'base64'));
     decrypted = Buffer.concat([decrypted, decipher.final()]);
     return res.status(200).json({ status: 200, message: "Successfully", data: JSON.parse(decrypted.toString('utf8')) });
