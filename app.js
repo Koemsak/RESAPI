@@ -75,7 +75,7 @@ app.delete("/api/users/:id", (req, res) => {
 
 app.post("/api/callback", (req, res) => {
     console.log(req.body);
-    return res.status(200).json({ status: 200, message: "Successfully", data: req.body });
+    return res.status(200).json({ status: 200, message: "Successfully", data: req.body.contents });
 })
 
 // get use to view
