@@ -74,7 +74,7 @@ app.delete("/api/users/:id", (req, res) => {
 })
 
 app.post("/api/callback", (req, res) => {
-    const inputField = req.body;
+    const inputField = JSON.parse(req.body);
     console.log(`Request data from partner: ${JSON.stringify(inputField)}`);
     try {
         const contents = inputField.contents;
